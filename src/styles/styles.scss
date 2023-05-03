@@ -1,0 +1,120 @@
+@import "theme";
+@import "checkbox";
+@import "radio";
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+@font-face {
+  font-family: "AvenirHeavy";
+  src: url("./fonts/Avenir-Heavy.ttf") format("truetype");
+ }
+ 
+ @font-face {
+  font-family: 'AvenirBook';
+  src: url('./fonts/Avenir-Book.ttf') format('truetype');
+}
+
+table {
+  border-radius: 16px;
+  max-width: 800px;
+  box-shadow: 0px 1px 10px 6px #E1E1E1;
+  border-spacing: 0px;
+  margin: 0 auto;
+
+  th {
+    font-family: AvenirHeavy, sans-serif;
+    font-size: 20px;
+    line-height: 1.75;
+    letter-spacing: 0;
+    padding: 24px 0 24px 0;
+    cursor: pointer;
+    background: #F7F7F7;
+
+    &:first-child {
+      border-radius: 16px 0px 0px 0px;
+    }
+
+    &:last-child {
+      border-radius: 0px 16px 0px 0px;
+    }
+
+    &:only-child {
+      border-radius: 16px 16px 0 0;
+    }
+
+    div.imageContainer {
+      display: inline;
+      margin-left: 5px;
+      padding: 10px 15px 10px 15px;
+      border-radius: 50%;
+      &:hover {
+        background-color: #DEDAFA;
+      }
+    }
+  }
+
+  td {
+    font-family: AvenirBook, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: 0.1px;
+    padding: 24px 0 24px 0;
+    position: relative;
+    
+    span.select-input-content {
+      margin-left: 20px;
+     }
+
+     hr {
+      position: absolute;
+      bottom: 0px;
+      width: -webkit-fill-available;
+      padding: 0;
+      margin: 0;// 24px 0 0;
+      border: 1px solid #E1E1E1;
+     }
+
+     &:first-child {
+      padding-left: 24px;
+    }
+
+    &:last-child {
+      padding-right: 24px;
+ 
+      hr {
+       margin: 0 24px 0 0
+      }
+    }
+   }
+
+  tbody {
+    padding: 24px;
+
+    tr {
+      &:last-child {
+        hr { 
+          display: none; 
+        }
+
+        td:first-child {
+          border-radius: 0 0 0 16px;
+        }
+
+        td:last-child {
+          border-radius: 0 0 16px 0;
+        }
+  
+        td:only-child {
+          border-radius: 0 0 16px 16px;
+        }
+      } 
+  
+      &.selected {
+        background-color: #EFEDFD;
+      }
+    }
+  }
+}

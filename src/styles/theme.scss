@@ -1,0 +1,51 @@
+@mixin themable($theme-name, $header-text, $header-bg, $cell-text, $cell-bg, $border-color, $highlight-color, $selected-color, $select-bg) {
+  .#{$theme-name} {
+      table {
+          border-color: $border-color;
+          tr.selected {
+            background-color: $selected-color;
+          }
+
+          th {
+            color: $header-text;
+            background-color: $header-bg;
+
+            div.image-container:hover {
+              background-color: $highlight-color;
+            }
+          }
+
+          td {
+            color: $cell-text;
+            background-color: $cell-bg;
+
+            hr {
+              border-color: $border-color;
+            }
+          }
+
+          .checkbox {
+            input[type="checkbox"]:checked + label {
+              background-color: $select-bg;
+              border-color: $border-color;
+            }
+          }
+
+            label.radio {
+              input {
+                &:checked + span {
+                  &:before {
+                    box-shadow: inset 0 0 0 0.4375em $select-bg;
+                  }
+                }
+              }
+              span.before {
+                box-shadow: inset 0 0 0 0.125em $select-bg;
+              }
+            }
+      }
+  }
+}
+
+@include themable(light, #000000, #F7F7F7, #000000, #ffffff, #E1E1E1, #DEDAFA, #EFEDFD, #5C50BB);
+@include themable(dark, #ffffff, black, #ffffff, darkgray, black, gray, black, black);
