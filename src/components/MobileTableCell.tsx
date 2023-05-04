@@ -6,8 +6,8 @@ type MobileTableCellProps = {
   rowNum: number;
   data: object;
   isSelected: boolean;
-  isSingleSelectEnabled: boolean;
-  isMultiSelectEnabled: boolean;
+  isSingleSelectEnabled?: boolean;
+  isMultiSelectEnabled?: boolean;
   onClickHandler: Function;
 };
 
@@ -57,7 +57,7 @@ const MobileTableCell: React.FC<MobileTableCellProps> = ({
               type={"checkbox"}
               checked={isSelected}
               onChange={() =>
-                onClickHandler(isSelected, rowNum, isSingleSelectEnabled)
+                onClickHandler(isSelected, rowNum, isMultiSelectEnabled)
               }
             />
             <label htmlFor={`select-${rowNum}`}></label>
