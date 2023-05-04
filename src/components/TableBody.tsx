@@ -8,17 +8,17 @@ import actions from "../actions";
 type TableBodyProps = {
   columnData: Header[];
   rowData: object[];
-  isSingleSelectEnabled: boolean;
-  isMultiSelectEnabled: boolean;
   showConciseMobileView: boolean;
+  isSingleSelectEnabled?: boolean;
+  isMultiSelectEnabled?: boolean;
 };
 
 const TableBody: React.FC<TableBodyProps> = ({
   columnData,
   rowData,
+  showConciseMobileView,
   isSingleSelectEnabled,
-  isMultiSelectEnabled,
-  showConciseMobileView
+  isMultiSelectEnabled
 }) => {
   const selectedRows = useAppSelector((state) => state.selectedRows);
   const dispatch = useAppDispatch();

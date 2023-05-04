@@ -8,16 +8,16 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import "../styles/styles.scss";
 
 type ReactTableProps = {
-  showHeaderRow: boolean;
+  hideHeaderRow?: boolean;
   columnData: Header[];
   tableData: object[];
-  isSingleSelectEnabled: boolean;
-  isMultiSelectEnabled: boolean;
+  isSingleSelectEnabled?: boolean;
+  isMultiSelectEnabled?: boolean;
   theme?: string;
 };
 
 const ReactTable: React.FC<ReactTableProps> = ({
-  showHeaderRow,
+  hideHeaderRow,
   columnData,
   tableData,
   isSingleSelectEnabled,
@@ -74,15 +74,15 @@ const ReactTable: React.FC<ReactTableProps> = ({
   return (
     <div className={`${theme ? theme : ""}`}>
       <table>
-        <thead>
-          {showHeaderRow && (
+        {!hideHeaderRow && (
+          <thead>
             <TableHeader
               headerData={columnData}
               onClickHandler={onSortDirectionChange}
               showConciseMobileView={showConciseView}
             />
-          )}
-        </thead>
+          </thead>
+        )}
         {rowData && (
           <TableBody
             columnData={columnData}

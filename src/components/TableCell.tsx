@@ -1,4 +1,5 @@
 import { Header } from "../typings";
+import getColumnStyleForCell from "../utils/style";
 
 type TableCellProps = {
   selector: string;
@@ -7,26 +8,10 @@ type TableCellProps = {
   isInput: boolean;
   rowNum: number;
   isSelected: boolean;
-  isSingleSelectEnabled: boolean;
-  isMultiSelectEnabled: boolean;
+  isSingleSelectEnabled?: boolean;
+  isMultiSelectEnabled?: boolean;
   onClickHandler: Function;
 };
-
-function getColumnStyleForCell(columnDetails: Header) {
-  let cellStyle = {};
-  if (columnDetails.minWidth) {
-    cellStyle.minWidth = columnDetails.minWidth;
-  }
-  if (columnDetails.maxWidth) {
-    cellStyle.maxWidth = columnDetails.maxWidth;
-  }
-  if (columnDetails.allowOverflow) {
-    (cellStyle.overflow = "hidden"),
-      (cellStyle.textOverflow = "clip"),
-      (cellStyle.whiteSpace = "nowrap");
-  }
-  return cellStyle;
-}
 
 const TableCell: React.FC<TableCellProps> = ({
   selector,
@@ -49,7 +34,7 @@ const TableCell: React.FC<TableCellProps> = ({
               type={"checkbox"}
               checked={isSelected}
               onChange={() =>
-                onClickHandler(isSelected, rowNum, isSingleSelectEnabled)
+                onClickHandler(isSelected, rowNum, !isMultiSelectEnabled)
               }
             />
             <label htmlFor={`select-${rowNum}`}></label>

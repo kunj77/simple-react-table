@@ -1,5 +1,6 @@
 import { Header } from "../typings";
 import { useEffect, useState } from "react";
+import getColumnStyleForCell from "../utils/style";
 
 type MobileTableCellProps = {
   columnData: Header[];
@@ -10,23 +11,6 @@ type MobileTableCellProps = {
   isMultiSelectEnabled?: boolean;
   onClickHandler: Function;
 };
-
-function getColumnStyleForCell(columnDetails: Header) {
-  let cellStyle = {};
-  if (columnDetails.minWidth) {
-    cellStyle.minWidth = columnDetails.minWidth;
-  }
-  if (columnDetails.maxWidth) {
-    cellStyle.maxWidth = columnDetails.maxWidth;
-  }
-  if (columnDetails.allowOverflow) {
-    (cellStyle.overflow = "hidden"),
-      (cellStyle.textOverflow = "clip"),
-      (cellStyle.whiteSpace = "nowrap");
-  }
-
-  return cellStyle;
-}
 
 const MobileTableCell: React.FC<MobileTableCellProps> = ({
   columnData,
@@ -42,7 +26,7 @@ const MobileTableCell: React.FC<MobileTableCellProps> = ({
   useEffect(() => {
     let mergedData = "";
     columnData.forEach(function (col) {
-      mergedData += data[col.selector] + ` `;
+      mergedData += data[col.selector as keyof typeof data] + ` `;
     });
     setDisplayData(mergedData);
   }, []);
