@@ -28,14 +28,6 @@ describe("TableBody", () => {
     });
     useEffect = jest.spyOn(React, "useEffect");
     mockUseEffect();
-
-    jest
-      .spyOn(ReactReduxHooks, "useSelector")
-      .mockImplementation((state) => store.getState());
-
-    jest
-      .spyOn(ReactReduxHooks, "useDispatch")
-      .mockImplementation(() => store.dispatch);
   });
 
   it("Should render concise view table body", () => {
